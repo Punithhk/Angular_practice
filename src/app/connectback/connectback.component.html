@@ -1,0 +1,42 @@
+<p>connectback works!</p>
+<button (click)="SHOW = true">Show Options</button>
+<div *ngIf="SHOW">
+  <button (click)="getData()">Show Data</button>
+</div>
+<div *ngIf="errmsg">
+  {{ errmsg }}
+</div>
+<div *ngIf="data">
+  <dialog open>
+    <p>----------------</p>
+    <div *ngFor="let a of data">
+      Name: {{ a.id }} <br />
+      Desc : {{ a.desc }} <br />
+      Price : {{ a.price }}
+      <p>---------------------</p>
+    </div>
+  </dialog>
+</div>
+<div class="box">
+  Add Order to the list <br />
+  ID : <input type="number" #id /> <br />
+  Desc : <input type="text" #desc /> <br />
+  Price : <input type="number" #price /> <br />
+  <button (click)="addData(id.value, desc.value, price.value)">
+    Add Order
+  </button>
+  <div *ngIf="msg">
+    {{ msg }}
+  </div>
+</div>
+<div class="box">
+  Delete Order from list <br />
+  ID : <input type="number" #id /> <br />
+  <button (click)="addData(id.value, desc.value, price.value)">
+    Delete Order
+  </button>
+
+  <div *ngIf="msg">
+    {{ msg }}
+  </div>
+</div>

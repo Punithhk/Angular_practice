@@ -1,0 +1,27 @@
+<!-- <nav>
+  <h2>Routing Links</h2>
+  
+</nav> -->
+<div>
+  <!-- <nav>
+    <a routeLink="/form" [routerLinkActive]="active"> Click here</a>
+  </nav> -->
+  <p>hello {{ name | uppercase }}</p>
+  <h1>Company is : {{ company }}</h1>
+  <button (click)="displayComp()">Reveal Company</button>
+  <br /><br />
+  <button (click)="navigateroute()">Open Form</button>
+  <h1></h1>
+  <br />
+  <input type="text" [(ngModel)]="inputvalue" />
+  <h6>The typed value is {{ inputvalue }}</h6>
+  <h3>Structural Directive</h3>
+  <p *appIdirective="5">repeated</p>
+  Login Form
+  <br /><br />
+  <input type="text" [(ngModel)]="username" /> <br />
+  <input type="text" [(ngModel)]="password" />
+  <br />
+  <button type="submit" (click)="verify()">Submit</button>
+  <h5>{{ result }}</h5>
+</div>

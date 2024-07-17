@@ -1,0 +1,35 @@
+<!-- Signin  form -->
+<div class="form-body">
+  <form [formGroup]="signinForm">
+    <div class="form-contents">
+      <label> Username : </label>
+      <input
+        type="text"
+        [ngClass]="{
+          valid: signinForm.controls['username'].valid,
+          invalid:
+            signinForm.controls['username'].invalid &&
+            !signinForm.controls['username'].pristine
+        }"
+        formControlName="username"
+      />
+      <div
+        *ngIf="
+          signinForm.controls['username'].errors &&
+          signinForm.controls['username'].dirty
+        "
+      ></div>
+      <div
+        *ngIf="signinForm.controls['username'].errors?.['required']"
+        style="color: red"
+      >
+        User name is required
+      </div>
+      <!--   same way for the password also  -->
+      <div *ngIf="!valid">Invalid Credentials--- Please try again</div>
+      <button (click)="onSubmit()" [disabled]="!signinForm.valid"></button>
+    </div>
+    <a [routerLink]="['/home']">Cancel</a>
+  </form>
+</div>
+<p>signin works!</p>

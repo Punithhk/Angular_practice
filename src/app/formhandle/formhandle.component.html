@@ -1,0 +1,41 @@
+<div class="container">
+  <p>formhandle works!</p>
+  <h1>Form Handling</h1>
+  <form [formGroup]="Form">
+    <div>
+      <label>First Name : </label>
+      <input type="text" formControlName="firstname" />
+      <p
+        *ngIf="
+          (Form.controls['firstname'].dirty ||
+            Form.controls['firstname'].touched ||
+            Form.controls['firstname'].pristine) &&
+          Form.controls['firstname'].errors
+        "
+      >
+        This is must required
+      </p>
+    </div>
+    <div>
+      last Name :
+      <input type="text" formControlName="lastname" />
+    </div>
+    <div *ngIf="Form.controls['lastname'].errors">
+      Lastname field is invalid.
+      <p *ngIf="Form.controls['lastname'].errors?.['required']">
+        This field is required!
+      </p>
+    </div>
+    Eamil :
+    <input type="text" formControlName="email" />
+    <p *ngIf="Form.controls['email'].errors?.['required']">
+      This field is required!
+    </p>
+    <p *ngIf="Form.controls['email'].errors?.['emailInvalid']">
+      {{ Form.controls['email'].errors?.['emailInvalid'].message }}
+    </p>
+    <br />
+    <button type="submit" (click)="(submitted)">Submit this</button>
+    <div>Entered name is : {{ Form.get("firstname")?.value }}</div>
+  </form>
+</div>
